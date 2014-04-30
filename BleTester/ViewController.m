@@ -90,12 +90,12 @@
     
     [self _fixIos7IssuesWithTableView];
     
-    _peripherals = [NSMutableArray new];
-    _isScanning  = NO;
+    _peripherals    = [NSMutableArray new];
+    _isScanning     = NO;
     
     __weak typeof(self) _weakSelf = self;
     
-    _bleCentral  = [BLECentral sharedInstance];
+    _bleCentral = [BLECentral sharedInstance];
     
     [_bleCentral setScanIntervalHandler:^CGFloat
     {

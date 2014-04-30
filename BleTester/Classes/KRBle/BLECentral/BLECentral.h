@@ -128,6 +128,11 @@ typedef CGFloat(^BLECentralScanIntervalHandler)(void);
 //BLE 的支援狀態
 @property (nonatomic, assign) CBCentralManagerState bleState;
 @property (nonatomic, strong) NSString *bleStateString;
+//傳送 Spp 資料給 Peripheral
+@property (nonatomic, strong) NSData *sendData;
+@property (nonatomic, assign) NSInteger dataLength;
+@property (nonatomic, assign) NSInteger sendDataIndex;
+@property (nonatomic, assign) CGFloat progress;
 
 +(instancetype)sharedInstance;
 -(id)init;
@@ -154,6 +159,7 @@ typedef CGFloat(^BLECentralScanIntervalHandler)(void);
 
 #pragma --mark Read / Write with Peripheral
 -(void)writeValueForPeripheralWithCharacteristic:(CBCharacteristic *)_characteristic data:(NSData *)_data completion:(BLECentralWriteCompletion)_completion;
+-(void)writeSppDataForCharacteristic:(CBCharacteristic *)_characteristic completion:(BLECentralWriteCompletion)_completion;
 -(void)readValueFromPeripheralWithCharacteristic:(CBCharacteristic *)_characteristic completion:(BLECentralReceiveCompletion)_completion;
 
 #pragma --mark Connection Methods

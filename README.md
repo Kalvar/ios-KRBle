@@ -10,7 +10,7 @@ CoreBluetooth.framework.
 
 ## How To Get Started
 
-KRBle implements the Bluetooth Low Engery (BLE), you can easy use this project to build your BLE applications.
+KRBle implements the Bluetooth Low Engery (BLE) and simulate SPP transfer big data ( ex : image、2,000 words ), central and peripheral can exchange the big data to each other, so, you can easy use this project to build your BLE applications.
 
 ``` objective-c
 #import "BLECentral.h"
@@ -71,8 +71,10 @@ KRBle implements the Bluetooth Low Engery (BLE), you can easy use this project t
 	[_bleCentral stopScan];
 }
 
-// ... More information please see the source code, by the way, I'm living in Taiwan, so the source code remarks almost Chinese language.
-// ... If you have any questions or never know the remarks talking about, just ask me or create an issue to exchange the conversation, I'll so glad to give you a hand.
+// More information please see the source code, by the way, I'm living in Taiwan, 
+// so the source code remarks almost Chinese language.
+// If you have any questions or never know the remarks talking about, 
+// just ask me or create an issue to exchange the conversation, I'll so glad to give you a hand.
 
 ```
 

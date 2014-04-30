@@ -380,6 +380,47 @@ static CGFloat _kScanNeverStopTimeout = 0.0f;
     }
 }
 
+/*
+ * @ 傳輸大資料給 Peripheral
+ */
+-(void)writeSppDataForCharacteristic:(CBCharacteristic *)_characteristic completion:(BLECentralWriteCompletion)_completion
+{
+    if( self.dataLength <= 0 )
+    {
+        _dataLength = [_sendData length];
+    }
+    
+    _progress = [[NSString stringWithFormat:@"%.2f", ( (float)(_sendDataIndex) / _dataLength ) * 100.0f] floatValue];
+    
+    //已傳出最後一筆封包
+    if (_sendDataIndex >= _dataLength)
+    {
+        if( _completion )
+        {
+            _completion(_discoveredPeripheral, _characteristic, nil);
+        }
+        return;
+    }
+    
+    NSInteger amountToSend = _sendData.length - _sendDataIndex;
+    if (amountToSend > 20)
+    {
+        amountToSend = 20;
+    }
+    
+    NSData *chunk = [NSData dataWithBytes:self.sendData.bytes+self.sendDataIndex length:amountToSend];
+    
+    _sendDataIndex += amountToSend;
+    
+    [self writeValueForPeripheralWithCharacteristic:_characteristic data:chunk completion:^(CBPeripheral *peripheral, CBCharacteristic *characteristic, NSError *error)
+     {
+         if( !error )
+         {
+             [self writeSppDataForCharacteristic:_characteristic completion:_completion];
+         }
+     }];
+}
+
 -(void)readValueFromPeripheralWithCharacteristic:(CBCharacteristic *)_characteristic completion:(BLECentralReceiveCompletion)_completion
 {
     if( self.discoveredPeripheral )

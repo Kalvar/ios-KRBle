@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "BLECentral.h"
+#import "BLEPorts.h"
 
 @interface ViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 {

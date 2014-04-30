@@ -119,6 +119,8 @@
     {
         _weakSelf.readLabel.text      = @"找到指定的 write 特徵碼";
         //_weakSelf._activityNotifyChar = characteristic;
+        
+        //Only send 20 Byptes to Peripheral
         [_blockBleCentral writeValueForPeripheralWithCharacteristic:characteristic
                                                                data:[_weakSelf.writeTextField.text dataUsingEncoding:NSUTF8StringEncoding]
                                                          completion:^(CBPeripheral *peripheral, CBCharacteristic *characteristic, NSError *error) {
@@ -128,7 +130,16 @@
                                                                  [_weakSelf._krProgress stopCornerTranslucentFromActivitingView:_weakSelf.view];
                                                              });
                                                          }];
+        
+        /*
+        //Write n Byptes to Peripheral
+        [_blockBleCentral writeSppDataForCharacteristic:characteristic completion:^(CBPeripheral *peripheral, CBCharacteristic *characteristic, NSError *error) {
+            //...
+        }];
+        */
+        
     }];
+    
 }
 
 -(IBAction)readValue:(id)sender
