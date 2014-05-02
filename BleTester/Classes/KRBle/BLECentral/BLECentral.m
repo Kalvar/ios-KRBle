@@ -315,7 +315,7 @@ static CGFloat _kScanNeverStopTimeout = 0.0f;
 
 -(void)disconnect
 {
-    [self disconnectWithCompletion:nil];
+    [self disconnectWithCompletion:self.disconnectCompletion];
 }
 
 #pragma --mark Notify Methods
@@ -444,7 +444,7 @@ static CGFloat _kScanNeverStopTimeout = 0.0f;
 
 -(void)connectPeripheral:(CBPeripheral *)_peripheral
 {
-    [self connectPeripheral:_peripheral completion:nil];
+    [self connectPeripheral:_peripheral completion:self.connectionCompletion];
 }
 
 #pragma --mark CBUUID Methods

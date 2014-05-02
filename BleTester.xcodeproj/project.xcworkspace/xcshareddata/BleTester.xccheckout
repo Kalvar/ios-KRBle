@@ -5,34 +5,34 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>3E1FCCBA-E84A-4674-8C7F-3431AB2BCA9F</string>
+	<string>DE3BFBB5-27D0-49F9-960B-B1741235717D</string>
 	<key>IDESourceControlProjectName</key>
 	<string>BleTester</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>5B084679-282E-4EC7-8FED-F815E3052DFA</key>
-		<string>https://github.com/Kalvar/ios-KRBle.git</string>
+		<key>182513B3-4FFA-45BC-977F-DE198D4B570F</key>
+		<string>https://github.com/DaidoujiChen/ios-KRBle.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>BleTester.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>5B084679-282E-4EC7-8FED-F815E3052DFA</key>
+		<key>182513B3-4FFA-45BC-977F-DE198D4B570F</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/Kalvar/ios-KRBle.git</string>
+	<string>https://github.com/DaidoujiChen/ios-KRBle.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>5B084679-282E-4EC7-8FED-F815E3052DFA</string>
+	<string>182513B3-4FFA-45BC-977F-DE198D4B570F</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>5B084679-282E-4EC7-8FED-F815E3052DFA</string>
+			<string>182513B3-4FFA-45BC-977F-DE198D4B570F</string>
 			<key>IDESourceControlWCCName</key>
 			<string>ios-KRBle</string>
 		</dict>

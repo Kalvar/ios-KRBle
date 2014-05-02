@@ -77,6 +77,7 @@
                                  forService:foundSerivce];
     }];
     
+    [self handleConnectionStatus];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -93,6 +94,7 @@
     {
         _statusLabel.text = @"Disconnect";
     }
+    [self connectButtonStatus:!_bleCentral.isConnected];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -104,6 +106,40 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+    
+}
+
+#pragma --mark private
+
+-(void) handleConnectionStatus
+{
+    __weak typeof(self) _weakSelf = self;
+    
+    [_bleCentral setConnectionCompletion:^(CBPeripheral *peripheral)
+    {
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            _weakSelf.statusLabel.text = @"Connected";
+            [_weakSelf connectButtonStatus:!_weakSelf.bleCentral.isConnected];
+            [_weakSelf._krProgress stopCornerTranslucentFromActivitingView:_weakSelf.view];
+        });
+    }];
+    
+    [_bleCentral setDisconnectCompletion:^(CBPeripheral *peripheral)
+    {
+         dispatch_sync(dispatch_get_main_queue(), ^{
+             _weakSelf.statusLabel.text = @"Disconnect";
+             [_weakSelf connectButtonStatus:!_weakSelf.bleCentral.isConnected];
+             [_weakSelf._krProgress stopCornerTranslucentFromActivitingView:_weakSelf.view];
+         });
+    }];
+    
+}
+
+-(void) connectButtonStatus : (BOOL) isEnable
+{
+
+    _connectButton.enabled = isEnable;
+    _disconnectButton.enabled = !isEnable;
     
 }
 
@@ -216,25 +252,13 @@
 -(IBAction)connectBt:(id)senderr
 {
     [self._krProgress startCornerTranslucentWithView:self.view tipText:@"Connecting" lockWindow:NO];
-    [_bleCentral connectPeripheral:_peripheral completion:^(CBPeripheral *peripheral)
-    {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.statusLabel.text = @"Connected";
-            [self._krProgress stopCornerTranslucentFromActivitingView:self.view];
-        });
-    }];
+    [_bleCentral connectPeripheral:_peripheral];
 }
 
 -(IBAction)disconnectBt:(id)sender
 {
     [self._krProgress startCornerTranslucentWithView:self.view tipText:@"Disconnecting" lockWindow:NO];
-    [_bleCentral disconnectWithCompletion:^(CBPeripheral *peripheral)
-    {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.statusLabel.text = @"Disconnect";
-            [self._krProgress stopCornerTranslucentFromActivitingView:self.view];
-        });
-    }];
+    [_bleCentral disconnect];
 }
 
 #pragma --mark UITextFieldDelegate
