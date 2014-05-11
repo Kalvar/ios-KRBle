@@ -1,7 +1,7 @@
 //
 //  BLEPeripheral.h
 //  KRBle
-//  V1.1
+//  V1.2
 //
 //  Created by Kalvar on 2013/12/9.
 //  Copyright (c) 2013 - 2014年 Kalvar. All rights reserved.
@@ -82,6 +82,10 @@ typedef void(^BLEPeripheralUnsubscribedCompletion)(CBPeripheralManager *peripher
 
 //要廣播的 Device Name
 @property (nonatomic, strong) NSString *name;
+//要廣播的額外數據
+@property (nonatomic, strong) NSData *advertiseData;
+//正在廣播的資料
+@property (nonatomic, strong) NSMutableDictionary *advertiseInfo;
 
 +(instancetype)sharedInstance;
 -(BLEPeripheral *)initWithDelegate:(id<BLEPeripheralDelegate>)_bleDelegate;

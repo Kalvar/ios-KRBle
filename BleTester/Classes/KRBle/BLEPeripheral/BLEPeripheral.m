@@ -1,7 +1,7 @@
 //
 //  BLEPeripheral.m
 //  KRBle
-//  V1.1
+//  V1.2
 //
 //  Created by Kalvar on 2013/12/9.
 //  Copyright (c) 2013 - 2014年 Kalvar. All rights reserved.
@@ -45,6 +45,8 @@
     self.eomEndHeader      = nil; //@"BOM";
     self.services          = [NSMutableArray new];
     self.name              = @"BleTester";
+    self.advertiseData     = nil;
+    self.advertiseInfo     = [NSMutableDictionary new];
     
     self._finishedTransfer = NO;
     self._stopNotify       = NO;
@@ -236,6 +238,8 @@
 
 @synthesize services          = _services;
 @synthesize name              = _name;
+@synthesize advertiseData     = _advertiseData;
+@synthesize advertiseInfo     = _advertiseInfo;
 
 @synthesize _finishedTransfer;
 @synthesize _stopNotify;
@@ -382,8 +386,22 @@
 {
     if( self.peripheralManager )
     {
-        [self.peripheralManager startAdvertising:@{CBAdvertisementDataServiceUUIDsKey : @[[CBUUID UUIDWithString:_serviceUUID]],
-                                                   CBAdvertisementDataLocalNameKey    : _name}];
+        if( _serviceUUID )
+        {
+            [_advertiseInfo setObject:@[[CBUUID UUIDWithString:_serviceUUID]] forKey:CBAdvertisementDataServiceUUIDsKey];
+        }
+        
+        if( _name.length > 0 )
+        {
+            [_advertiseInfo setObject:_name forKey:CBAdvertisementDataLocalNameKey];
+        }
+
+        if( _advertiseData )
+        {
+            [_advertiseInfo setObject:_advertiseData forKey:CBAdvertisementDataManufacturerDataKey];
+        }
+        
+        [self.peripheralManager startAdvertising:(NSDictionary *)_advertiseInfo];
     }
 }
 

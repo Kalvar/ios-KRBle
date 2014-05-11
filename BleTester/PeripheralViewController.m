@@ -228,7 +228,15 @@
     
     if (self.advertisingSwitch.on)
     {
+        //Add your advertising information.
+        _blePeripheral.name          = @"BleTester";
+        _blePeripheral.advertiseData = [@"Hello Open World" dataUsingEncoding:NSUTF8StringEncoding];
+        
+        //Start in advertising.
         [_blePeripheral startAdvertisingForServiceUUID:_serviceTextField.text];
+        
+        //Log the advertising information to see.
+        NSLog(@"advertise info : %@", _blePeripheral.advertiseInfo);
     }
     else
     {

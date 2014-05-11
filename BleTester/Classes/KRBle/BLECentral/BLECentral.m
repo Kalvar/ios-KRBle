@@ -1,7 +1,7 @@
 //
 //  BLECentral.h
 //  KRBle
-//  V1.1
+//  V1.2
 //
 //  Created by Kalvar on 2013/12/9.
 //  Copyright (c) 2013 - 2014年 Kalvar. All rights reserved.
@@ -315,7 +315,8 @@ static CGFloat _kScanNeverStopTimeout = 0.0f;
 
 -(void)disconnect
 {
-    [self disconnectWithCompletion:self.disconnectCompletion];
+    //[self disconnectWithCompletion:nil];
+    [self disconnectWithCompletion:_disconnectCompletion];
 }
 
 #pragma --mark Notify Methods
@@ -444,7 +445,8 @@ static CGFloat _kScanNeverStopTimeout = 0.0f;
 
 -(void)connectPeripheral:(CBPeripheral *)_peripheral
 {
-    [self connectPeripheral:_peripheral completion:self.connectionCompletion];
+    //[self connectPeripheral:_peripheral completion:nil];
+    [self connectPeripheral:_peripheral completion:_connectionCompletion];
 }
 
 #pragma --mark CBUUID Methods

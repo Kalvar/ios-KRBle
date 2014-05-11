@@ -1,7 +1,7 @@
 //
 //  BLECentral.h
 //  KRBle
-//  V1.1
+//  V1.2
 //
 //  Created by Kalvar on 2013/12/9.
 //  Copyright (c) 2013 - 2014年 Kalvar. All rights reserved.

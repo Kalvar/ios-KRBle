@@ -21,8 +21,8 @@
 @property (nonatomic, weak) IBOutlet UILabel *readLabel;
 @property (nonatomic, weak) IBOutlet UILabel *identifierLabel;
 @property (nonatomic, weak) IBOutlet UILabel *statusLabel;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *connectButton;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *disconnectButton;
+@property (nonatomic, weak) IBOutlet UIBarButtonItem *connectButton;
+@property (nonatomic, weak) IBOutlet UIBarButtonItem *disconnectButton;
 
 @property (nonatomic, strong) CBPeripheral *peripheral;
 @property (nonatomic, strong) BLECentral *bleCentral;

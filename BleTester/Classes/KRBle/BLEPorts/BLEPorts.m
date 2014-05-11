@@ -115,6 +115,7 @@
     if (!UUID) return "NULL";
     return [[UUID UUIDString] UTF8String];
 }
+
 /*
  *  @method compareCBUUID
  *

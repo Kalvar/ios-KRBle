@@ -44,6 +44,16 @@
 
 @end
 
+@implementation DeviceViewController (fixStatus)
+
+-(void)_connectButtonStatus:(BOOL)_isEnable
+{
+    self.connectButton.enabled    = _isEnable;
+    self.disconnectButton.enabled = !_isEnable;
+}
+
+@end
+
 @implementation DeviceViewController
 
 @synthesize serviceTextField     = _serviceTextField;
@@ -52,6 +62,8 @@
 @synthesize readLabel            = _readLabel;
 @synthesize identifierLabel      = _identifierLabel;
 @synthesize statusLabel          = _statusLabel;
+@synthesize connectButton        = _connectButton;
+@synthesize disconnectButton     = _disconnectButton;
 
 @synthesize peripheral           = _peripheral;
 @synthesize bleCentral           = _bleCentral;
@@ -77,7 +89,25 @@
                                  forService:foundSerivce];
     }];
     
-    [self handleConnectionStatus];
+    //連線時
+    [_bleCentral setConnectionCompletion:^(CBPeripheral *peripheral)
+     {
+         dispatch_sync(dispatch_get_main_queue(), ^{
+             _weakSelf.statusLabel.text = @"Connected";
+             [_weakSelf _connectButtonStatus:!_weakSelf.bleCentral.isConnected];
+             [_weakSelf._krProgress stopCornerTranslucentFromActivitingView:_weakSelf.view];
+         });
+     }];
+    
+    //斷線時
+    [_bleCentral setDisconnectCompletion:^(CBPeripheral *peripheral)
+     {
+         dispatch_sync(dispatch_get_main_queue(), ^{
+             _weakSelf.statusLabel.text = @"Disconnect";
+             [_weakSelf _connectButtonStatus:!_weakSelf.bleCentral.isConnected];
+             [_weakSelf._krProgress stopCornerTranslucentFromActivitingView:_weakSelf.view];
+         });
+     }];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -94,7 +124,6 @@
     {
         _statusLabel.text = @"Disconnect";
     }
-    [self connectButtonStatus:!_bleCentral.isConnected];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -106,40 +135,6 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    
-}
-
-#pragma --mark private
-
--(void) handleConnectionStatus
-{
-    __weak typeof(self) _weakSelf = self;
-    
-    [_bleCentral setConnectionCompletion:^(CBPeripheral *peripheral)
-    {
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            _weakSelf.statusLabel.text = @"Connected";
-            [_weakSelf connectButtonStatus:!_weakSelf.bleCentral.isConnected];
-            [_weakSelf._krProgress stopCornerTranslucentFromActivitingView:_weakSelf.view];
-        });
-    }];
-    
-    [_bleCentral setDisconnectCompletion:^(CBPeripheral *peripheral)
-    {
-         dispatch_sync(dispatch_get_main_queue(), ^{
-             _weakSelf.statusLabel.text = @"Disconnect";
-             [_weakSelf connectButtonStatus:!_weakSelf.bleCentral.isConnected];
-             [_weakSelf._krProgress stopCornerTranslucentFromActivitingView:_weakSelf.view];
-         });
-    }];
-    
-}
-
--(void) connectButtonStatus : (BOOL) isEnable
-{
-
-    _connectButton.enabled = isEnable;
-    _disconnectButton.enabled = !isEnable;
     
 }
 
@@ -252,13 +247,11 @@
 -(IBAction)connectBt:(id)senderr
 {
     [self._krProgress startCornerTranslucentWithView:self.view tipText:@"Connecting" lockWindow:NO];
-    [_bleCentral connectPeripheral:_peripheral];
 }
 
 -(IBAction)disconnectBt:(id)sender
 {
     [self._krProgress startCornerTranslucentWithView:self.view tipText:@"Disconnecting" lockWindow:NO];
-    [_bleCentral disconnect];
 }
 
 #pragma --mark UITextFieldDelegate
