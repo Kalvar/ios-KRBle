@@ -80,7 +80,7 @@ KRBle implements the Bluetooth Low Engery (BLE) and simulate SPP transfer big da
 
 ## Version
 
-V1.1
+V1.2
 
 ## License
 
