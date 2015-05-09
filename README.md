@@ -8,7 +8,7 @@
 
 ```ruby
 platform :ios, '7.0'
-pod "KRBeaconFinder", "~> 1.2"
+pod "KRBle", "~> 1.2"
 ```
 
 ## How To Get Started
