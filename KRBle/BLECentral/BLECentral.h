@@ -3,8 +3,8 @@
 //  KRBle
 //  V1.2
 //
-//  Created by Kalvar on 2013/12/9.
-//  Copyright (c) 2013 - 2014年 Kalvar. All rights reserved.
+//  Created by Kalvar Lin on 2013/12/9.
+//  Copyright (c) 2013 - 2015年 Kalvar Lin. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -145,6 +145,9 @@ typedef CGFloat(^BLECentralScanIntervalHandler)(void);
 -(void)startScanInterval:(CGFloat)_scanInterval continueInterval:(CGFloat)_continueInterval;
 -(void)startScan;
 -(void)stopScan;
+
+#pragma --mark Memory Methods
+-(void)freeMemory;
 
 #pragma --mark Disconnect Methods
 -(void)disconnectWithCompletion:(BLECentralDisconnectCompletion)_completion;

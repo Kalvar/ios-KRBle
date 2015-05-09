@@ -3,8 +3,8 @@
 //  KRBle
 //  V1.2
 //
-//  Created by Kalvar on 2013/12/9.
-//  Copyright (c) 2013 - 2014年 Kalvar. All rights reserved.
+//  Created by Kalvar Lin on 2013/12/9.
+//  Copyright (c) 2013 - 2015年 Kalvar Lin. All rights reserved.
 //
 
 #import "BLECentral.h"
@@ -24,19 +24,8 @@ static CGFloat _kScanNeverStopTimeout = 0.0f;
 
 @implementation BLECentral (fixInitials)
 
--(void)_initWithVars
+-(void)_initWithBlocks
 {
-    /*
-     * @ 另外為 Central 開一條 Thread
-     *   - 用於避免 Warning :
-     *     CoreBluetooth[WARNING] <CBCentralManager: 0x16d94770> is disabling duplicate filtering, but is using the default queue (main thread) for delegate events
-     *   
-     *   - 參考文獻 : 
-     *     http://stackoverflow.com/questions/18970247/cbcentralmanager-changes-for-ios-7
-     *
-     */
-    dispatch_queue_t _centralQueue = dispatch_queue_create("com.central.KRBle", DISPATCH_QUEUE_SERIAL);// or however you want to create your dispatch_queue_t
-    
     self.updateStateHandler              = nil;
     self.writeCompletion                 = nil;
     self.receiveCompletion               = nil;
@@ -50,6 +39,22 @@ static CGFloat _kScanNeverStopTimeout = 0.0f;
     self.failConnectCompletion           = nil;
     self.connectionRssi                  = nil;
     self.scanIntervalHandler             = nil;
+}
+
+-(void)_initWithVars
+{
+    [self _initWithBlocks];
+    
+    /*
+     * @ 另外為 Central 開一條 Thread
+     *   - 用於避免 Warning :
+     *     CoreBluetooth[WARNING] <CBCentralManager: 0x16d94770> is disabling duplicate filtering, but is using the default queue (main thread) for delegate events
+     *   
+     *   - 參考文獻 : 
+     *     http://stackoverflow.com/questions/18970247/cbcentralmanager-changes-for-ios-7
+     *
+     */
+    dispatch_queue_t _centralQueue = dispatch_queue_create("com.central.KRBle", DISPATCH_QUEUE_SERIAL);
     
     self.delegate              = nil;
     //self.centralManager      = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
@@ -208,7 +213,30 @@ static CGFloat _kScanNeverStopTimeout = 0.0f;
             [self.centralManager scanForPeripheralsWithServices:nil
                                                         options:@{CBCentralManagerScanOptionAllowDuplicatesKey : @YES}];
         }
-        
+        /*
+         * @ 2014.04.27 PM 20:07
+         * @ Scanning 與 NSTimer 的執行緒問題
+         *   - 情況 : 
+         *       在這裡使用 Central 的 scanForperipheral 方法時，如果又使用 NSTimer 做 scanning timeout 的控制，
+         *       就會遇到 NSRunLoop 術突的問題，進而造成 NSTimer 不會被觸發。
+         *   
+         *   - 原因 : 
+         *       這主要是因為 NSTimer 與當前作用的 Class Property 連動到了一起，進而造成只要有設定 property 並使用到 NSRunLoop 範圍的參數，
+         *       都不會被作動，例如 : 
+         *          self._timeoutTimer = [NSTimer scheduledTimerWithTimeInterval ...];
+         *       這樣跟 self. 的參數連動到了一起，這就會造成 NSTimer 不會被觸發，而如果是單獨使用 [NSTimer scheduledTimerWithTimeInterval ...]; 
+         *       就能正常觸發 NSTimer。
+         *
+         *
+         *   - 解法 : 
+         *       建立一個 Singleton 的 TimeoutTimer Class，之後將 NSTimer 封裝進去，再到本 Class 裡直接使用 : 
+         *          [[TimeoutTimer sharedInstance] startTimeout:_timeout eventHandler:^{ ... }];
+         *       的模式來跑在另一個執行緒 ( 線程 ) 裡，而且不要在本 Class 去設 property ( self. ) 連動該 TimeoutTimer Class 即可解決問題。
+         *
+         * @ 2014.04.30 PM 21:15
+         *   - 後來發現不是執行緒的問題，而是我在 didDiscoverPeripheral Delegate 方法裡執行了 stopTimeoutTimer 函式才會沒觸發後續 TimeoutTimer 的動作。
+         *
+         */
         [self _startTimeoutTimerWithTimeout:_timeout];
     }
 }
@@ -269,6 +297,17 @@ static CGFloat _kScanNeverStopTimeout = 0.0f;
         [self.centralManager stopScan];
     }
     [self._timeoutTimer removeDifferPass];
+}
+
+#pragma --mark Memory Methods
+-(void)freeMemory
+{
+    [self stopScan];
+    [self _initWithBlocks];
+    _discoveredPeripheral = nil;
+    _advertisementInfo    = nil;
+    [_combinedData setLength:0];
+    [_discoveredServices removeAllObjects];
 }
 
 #pragma --mark Disconnect Methods
@@ -717,6 +756,13 @@ static CGFloat _kScanNeverStopTimeout = 0.0f;
             }
         }
     }
+    
+    /*
+     * @ 2014.04.27 PM 21:48
+     *   - 不選擇在這裡停止 TimeoutTimer，如在這裡停止，則做 Timeout 的意義會消失，
+     *     應該是在 connectPeripheral 或執行 stopScan 時，才需要停止 TimeoutTimer。
+     */
+    //[self _stopTimeoutTimer];
     
     self.advertisementInfo = advertisementData;
     self.rssi              = [RSSI integerValue];

@@ -4,13 +4,16 @@
 <img src="https://dl.dropbox.com/u/83663874/GitHubs/KRBle-Central.png" alt="Central" title="Central" style="margin: 20px;" class="center" /> &nbsp;
 <img src="https://dl.dropbox.com/u/83663874/GitHubs/KRBle-Peripheral.png" alt="Peripheral" title="Peripheral" style="margin: 20px;" class="center" /> 
 
-## Supports
+#### Podfile
 
-CoreBluetooth.framework.
+```ruby
+platform :ios, '7.0'
+pod "KRBeaconFinder", "~> 1.2"
+```
 
 ## How To Get Started
 
-KRBle implements the Bluetooth Low Engery (BLE) and simulate SPP transfer big data ( ex : image、2,000 words ), central and peripheral can exchange the big data to each other, so, you can easy use this project to build your BLE applications.
+KRBle implements the Bluetooth Low Engery (BLE) and simulate SPP transfer big data ( ex : image / 2,000 words ), central and peripheral can exchange the big data to each other, summarized, you could easy use this project to build your BLE applications.
 
 ``` objective-c
 #import "BLECentral.h"
@@ -86,6 +89,6 @@ V1.2
 
 MIT.
 
-## Important
+## Remarks
 
-Make it sharing and testing for helping the world to be wonderful.
+Sharing is the best importance in the whole world.

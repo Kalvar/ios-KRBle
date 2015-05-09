@@ -3,7 +3,7 @@
 //  V1.2
 //
 //  Created by Kuo-Ming Lin on 13/6/22.
-//  Copyright (c) 2013 - 2014年 Kuo-Ming Lin. All rights reserved.
+//  Copyright (c) 2013 - 2015年 Kuo-Ming Lin. All rights reserved.
 //
 
 #import "KRProgress.h"

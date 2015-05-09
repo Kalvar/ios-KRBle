@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		8E0C7ABB190E33D300C7C63C /* PeripheralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E0C7ABA190E33D300C7C63C /* PeripheralViewController.m */; };
+		8E6E15081AFE0750000F743C /* BLECentral.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6E14FF1AFE0750000F743C /* BLECentral.m */; };
+		8E6E15091AFE0750000F743C /* TimeoutTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6E15011AFE0750000F743C /* TimeoutTimer.m */; };
+		8E6E150A1AFE0750000F743C /* BLEPeripheral.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6E15041AFE0750000F743C /* BLEPeripheral.m */; };
+		8E6E150B1AFE0750000F743C /* BLEPorts.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6E15071AFE0750000F743C /* BLEPorts.m */; };
 		8EBE18DF190949D900F50B6D /* KRProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EBE18DE190949D900F50B6D /* KRProgress.m */; };
 		8EEBC7931908D29A00D3E7CD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EEBC7921908D29A00D3E7CD /* Foundation.framework */; };
 		8EEBC7951908D29A00D3E7CD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EEBC7941908D29A00D3E7CD /* CoreGraphics.framework */; };
@@ -25,10 +29,6 @@
 		8EEBC7BE1908D29A00D3E7CD /* BleTesterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EEBC7BD1908D29A00D3E7CD /* BleTesterTests.m */; };
 		8EEBC7D91908DC5800D3E7CD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EEBC7D81908DC5800D3E7CD /* ViewController.m */; };
 		8EEBC7DB1908DEF200D3E7CD /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EEBC7DA1908DEF200D3E7CD /* CoreBluetooth.framework */; };
-		8EEE524019113A1E00BDF862 /* BLECentral.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EEE523719113A1E00BDF862 /* BLECentral.m */; };
-		8EEE524119113A1E00BDF862 /* TimeoutTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EEE523919113A1E00BDF862 /* TimeoutTimer.m */; };
-		8EEE524219113A1E00BDF862 /* BLEPeripheral.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EEE523C19113A1E00BDF862 /* BLEPeripheral.m */; };
-		8EEE524319113A1E00BDF862 /* BLEPorts.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EEE523F19113A1E00BDF862 /* BLEPorts.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +44,15 @@
 /* Begin PBXFileReference section */
 		8E0C7AB9190E33D300C7C63C /* PeripheralViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeripheralViewController.h; sourceTree = "<group>"; };
 		8E0C7ABA190E33D300C7C63C /* PeripheralViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeripheralViewController.m; sourceTree = "<group>"; };
+		8E6E14FE1AFE0750000F743C /* BLECentral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLECentral.h; sourceTree = "<group>"; };
+		8E6E14FF1AFE0750000F743C /* BLECentral.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLECentral.m; sourceTree = "<group>"; };
+		8E6E15001AFE0750000F743C /* TimeoutTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeoutTimer.h; sourceTree = "<group>"; };
+		8E6E15011AFE0750000F743C /* TimeoutTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeoutTimer.m; sourceTree = "<group>"; };
+		8E6E15031AFE0750000F743C /* BLEPeripheral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLEPeripheral.h; sourceTree = "<group>"; };
+		8E6E15041AFE0750000F743C /* BLEPeripheral.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLEPeripheral.m; sourceTree = "<group>"; };
+		8E6E15061AFE0750000F743C /* BLEPorts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLEPorts.h; sourceTree = "<group>"; };
+		8E6E15071AFE0750000F743C /* BLEPorts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLEPorts.m; sourceTree = "<group>"; };
+		8E6E150D1AFE0853000F743C /* KRBle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KRBle.h; sourceTree = "<group>"; };
 		8EBE18DD190949D900F50B6D /* KRProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KRProgress.h; sourceTree = "<group>"; };
 		8EBE18DE190949D900F50B6D /* KRProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KRProgress.m; sourceTree = "<group>"; };
 		8EEBC78F1908D29A00D3E7CD /* BleTester.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BleTester.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -68,14 +77,6 @@
 		8EEBC7D71908DC5800D3E7CD /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		8EEBC7D81908DC5800D3E7CD /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		8EEBC7DA1908DEF200D3E7CD /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
-		8EEE523619113A1E00BDF862 /* BLECentral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLECentral.h; sourceTree = "<group>"; };
-		8EEE523719113A1E00BDF862 /* BLECentral.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLECentral.m; sourceTree = "<group>"; };
-		8EEE523819113A1E00BDF862 /* TimeoutTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeoutTimer.h; sourceTree = "<group>"; };
-		8EEE523919113A1E00BDF862 /* TimeoutTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeoutTimer.m; sourceTree = "<group>"; };
-		8EEE523B19113A1E00BDF862 /* BLEPeripheral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLEPeripheral.h; sourceTree = "<group>"; };
-		8EEE523C19113A1E00BDF862 /* BLEPeripheral.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLEPeripheral.m; sourceTree = "<group>"; };
-		8EEE523E19113A1E00BDF862 /* BLEPorts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLEPorts.h; sourceTree = "<group>"; };
-		8EEE523F19113A1E00BDF862 /* BLEPorts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLEPorts.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +104,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8E6E14FC1AFE0750000F743C /* KRBle */ = {
+			isa = PBXGroup;
+			children = (
+				8E6E150D1AFE0853000F743C /* KRBle.h */,
+				8E6E14FD1AFE0750000F743C /* BLECentral */,
+				8E6E15021AFE0750000F743C /* BLEPeripheral */,
+				8E6E15051AFE0750000F743C /* BLEPorts */,
+			);
+			path = KRBle;
+			sourceTree = SOURCE_ROOT;
+		};
+		8E6E14FD1AFE0750000F743C /* BLECentral */ = {
+			isa = PBXGroup;
+			children = (
+				8E6E14FE1AFE0750000F743C /* BLECentral.h */,
+				8E6E14FF1AFE0750000F743C /* BLECentral.m */,
+				8E6E15001AFE0750000F743C /* TimeoutTimer.h */,
+				8E6E15011AFE0750000F743C /* TimeoutTimer.m */,
+			);
+			path = BLECentral;
+			sourceTree = "<group>";
+		};
+		8E6E15021AFE0750000F743C /* BLEPeripheral */ = {
+			isa = PBXGroup;
+			children = (
+				8E6E15031AFE0750000F743C /* BLEPeripheral.h */,
+				8E6E15041AFE0750000F743C /* BLEPeripheral.m */,
+			);
+			path = BLEPeripheral;
+			sourceTree = "<group>";
+		};
+		8E6E15051AFE0750000F743C /* BLEPorts */ = {
+			isa = PBXGroup;
+			children = (
+				8E6E15061AFE0750000F743C /* BLEPorts.h */,
+				8E6E15071AFE0750000F743C /* BLEPorts.m */,
+			);
+			path = BLEPorts;
+			sourceTree = "<group>";
+		};
 		8EBE18DC190949D900F50B6D /* KRProgress */ = {
 			isa = PBXGroup;
 			children = (
@@ -212,49 +253,10 @@
 			isa = PBXGroup;
 			children = (
 				8EBE18DC190949D900F50B6D /* KRProgress */,
-				8EEE523419113A1E00BDF862 /* KRBle */,
+				8E6E14FC1AFE0750000F743C /* KRBle */,
 			);
 			name = Classes;
 			path = BleTester/Classes;
-			sourceTree = "<group>";
-		};
-		8EEE523419113A1E00BDF862 /* KRBle */ = {
-			isa = PBXGroup;
-			children = (
-				8EEE523519113A1E00BDF862 /* BLECentral */,
-				8EEE523A19113A1E00BDF862 /* BLEPeripheral */,
-				8EEE523D19113A1E00BDF862 /* BLEPorts */,
-			);
-			path = KRBle;
-			sourceTree = "<group>";
-		};
-		8EEE523519113A1E00BDF862 /* BLECentral */ = {
-			isa = PBXGroup;
-			children = (
-				8EEE523619113A1E00BDF862 /* BLECentral.h */,
-				8EEE523719113A1E00BDF862 /* BLECentral.m */,
-				8EEE523819113A1E00BDF862 /* TimeoutTimer.h */,
-				8EEE523919113A1E00BDF862 /* TimeoutTimer.m */,
-			);
-			path = BLECentral;
-			sourceTree = "<group>";
-		};
-		8EEE523A19113A1E00BDF862 /* BLEPeripheral */ = {
-			isa = PBXGroup;
-			children = (
-				8EEE523B19113A1E00BDF862 /* BLEPeripheral.h */,
-				8EEE523C19113A1E00BDF862 /* BLEPeripheral.m */,
-			);
-			path = BLEPeripheral;
-			sourceTree = "<group>";
-		};
-		8EEE523D19113A1E00BDF862 /* BLEPorts */ = {
-			isa = PBXGroup;
-			children = (
-				8EEE523E19113A1E00BDF862 /* BLEPorts.h */,
-				8EEE523F19113A1E00BDF862 /* BLEPorts.m */,
-			);
-			path = BLEPorts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -362,14 +364,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				8EEBC7D91908DC5800D3E7CD /* ViewController.m in Sources */,
-				8EEE524119113A1E00BDF862 /* TimeoutTimer.m in Sources */,
+				8E6E15091AFE0750000F743C /* TimeoutTimer.m in Sources */,
 				8EBE18DF190949D900F50B6D /* KRProgress.m in Sources */,
 				8EEBC7A91908D29A00D3E7CD /* DeviceViewController.m in Sources */,
-				8EEE524019113A1E00BDF862 /* BLECentral.m in Sources */,
-				8EEE524219113A1E00BDF862 /* BLEPeripheral.m in Sources */,
+				8E6E15081AFE0750000F743C /* BLECentral.m in Sources */,
+				8E6E150A1AFE0750000F743C /* BLEPeripheral.m in Sources */,
 				8EEBC7A31908D29A00D3E7CD /* AppDelegate.m in Sources */,
 				8EEBC79F1908D29A00D3E7CD /* main.m in Sources */,
-				8EEE524319113A1E00BDF862 /* BLEPorts.m in Sources */,
+				8E6E150B1AFE0750000F743C /* BLEPorts.m in Sources */,
 				8E0C7ABB190E33D300C7C63C /* PeripheralViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -501,7 +503,7 @@
 				INFOPLIST_FILE = "BleTester/BleTester-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0AE07DF5-3D16-4CC8-959E-176ED9BF1D13";
+				PROVISIONING_PROFILE = "C8FD653F-A858-47C1-8FE9-B4B2CA479065";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -518,7 +520,7 @@
 				INFOPLIST_FILE = "BleTester/BleTester-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0AE07DF5-3D16-4CC8-959E-176ED9BF1D13";
+				PROVISIONING_PROFILE = "C8FD653F-A858-47C1-8FE9-B4B2CA479065";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

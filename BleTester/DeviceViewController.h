@@ -2,13 +2,12 @@
 //  ViewController.h
 //  BleTester
 //
-//  Created by Kalvar on 2014/4/24.
-//  Copyright (c) 2014年 Kalvar. All rights reserved.
+//  Created by Kalvar Lin on 2014/4/24.
+//  Copyright (c) 2014年 Kalvar Lin. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "BLECentral.h"
-#import "BLEPorts.h"
+#import "KRBle.h"
 
 @interface DeviceViewController : UIViewController<UITextFieldDelegate>
 {

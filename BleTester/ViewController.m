@@ -2,8 +2,8 @@
 //  ViewController.m
 //  BleTester
 //
-//  Created by Kalvar on 2014/4/24.
-//  Copyright (c) 2014年 Kalvar. All rights reserved.
+//  Created by Kalvar Lin on 2014/4/24.
+//  Copyright (c) 2014年 Kalvar Lin. All rights reserved.
 //
 
 #import "ViewController.h"
@@ -84,6 +84,8 @@
     return self;
 }
 
+//#error 要為 Peripheral 寫一個廣播的 Timer 去做 Timeout 和 Interval ( 廣播頻率控制 )
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -128,8 +130,11 @@
 
 -(void)viewWillDisappear:(BOOL)animated
 {
-    [self _stopTimer];
-    [_bleCentral stopScan];
+    //[self _stopTimer];
+    //[_bleCentral stopScan];
+    
+    //[_bleCentral freeMemory];
+    
     [super viewWillDisappear:animated];
 }
 

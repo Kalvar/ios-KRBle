@@ -3,8 +3,8 @@
 //  KRBle
 //  V1.2
 //
-//  Created by Kalvar on 2014/4/27.
-//  Copyright (c) 2014年 Kalvar. All rights reserved.
+//  Created by Kalvar Lin on 2014/4/27.
+//  Copyright (c) 2014年 Kalvar Lin. All rights reserved.
 //
 
 #import "TimeoutTimer.h"
