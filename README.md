@@ -8,7 +8,7 @@
 
 ```ruby
 platform :ios, '7.0'
-pod "KRBle", "~> 1.2"
+pod "KRBle", "~> 1.2.1"
 ```
 
 ## How To Get Started
@@ -83,7 +83,7 @@ KRBle implements the Bluetooth Low Engery (BLE) and simulate SPP transfer big da
 
 ## Version
 
-V1.2
+V1.2.1
 
 ## License
 

@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "KRBle"
-  s.version      = "1.2"
+  s.version      = "1.2.1"
   s.summary      = "Achieved BLE with Central and Peripheral modules in BT4.0."
   s.description  = <<-DESC
                    KRBle implements the Bluetooth Low Engery (BLE) and simulate SPP transfer big data ( ex : image / 2,000 words ), central and peripheral can exchange the big data to each other, summarized, you could easy use this project to build your BLE applications.
@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/Kalvar/ios-KRBle.git", :tag => s.version.to_s }
   s.platform     = :ios, '7.0'
   s.requires_arc = true
-  s.public_header_files = 'KRBle/*.h', 'KRBle/*'
-  s.source_files = 'KRBle/KRBle.h'
+  s.public_header_files = 'KRBle/**/*.h'
+  s.source_files = 'KRBle/**/*.{h,m}'
   s.frameworks   = 'Foundation', 'CoreBluetooth'
 end 
